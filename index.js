@@ -18,7 +18,8 @@ app.get('/api/', (req, res) => {
             res.status(400).send('Search term is too short, use three letters or more');
         }
     } else {
-        res.status(400).send('Missing search term, use ?s=[input]');
+        res.json(repo.getMovies())
+        // res.status(400).send('Missing search term, use ?s=[input]');
     }
 });
 

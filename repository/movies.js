@@ -31,9 +31,16 @@ const starWars = {
 
 module.exports = {
     getMovies: function(searchTerm){
-        searchTerm = searchTerm.toLowerCase();
-        if('batman'.includes(searchTerm)) return batman;
-        if('star wars'.includes(searchTerm)) return starWars;
-        return {Search: []};
+        searchTerm = searchTerm?.toLowerCase();
+        if (typeof searchTerm === 'string') {
+          if('batman'.includes(searchTerm)) {
+            return batman;
+          };
+          if('star wars'.includes(searchTerm)) {
+            return starWars;
+          };
+          return {Search: []}
+        }
+        return {Search: [...batman.Search, ...starWars.Search]};
     }
 }
